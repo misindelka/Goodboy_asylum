@@ -2,7 +2,7 @@
 /* eslint-disable no-dupe-keys */
 module.exports = {
 	root: true,
-
+	parser: '@typescript-eslint/parser',
 	plugins: ['react', '@typescript-eslint', 'prettier'],
 	extends: [
 		'airbnb-typescript',
@@ -56,4 +56,12 @@ module.exports = {
 		'react/require-default-props': 'off',
 		'react/jsx-props-no-spreading': 'off',
 	},
+	overrides: [
+		{
+			files: ['*.ts', '*.tsx'], // Your TypeScript files extension
+			parserOptions: {
+				project: ['./tsconfig.json'], // Specify it only for TypeScript files
+			},
+		},
+	],
 };

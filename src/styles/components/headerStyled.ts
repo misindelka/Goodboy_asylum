@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const Wrapper = styled.div`
     align-items: center;
@@ -24,6 +24,16 @@ export const LogoImage = styled.img`
     margin-right: ${(props) => props.theme.secondaryPadding};
 `;
 
-export const Container = styled.div`
+export const LinkTo = styled(NavLink)`
     display: flex;
+    color: black;
+    cursor: pointer;
+    font-size: ${(props) => props.theme.primaryFontSize};
+    padding: ${(props) => props.theme.smallPadding};
+    text-decoration: none;
+    :hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: transform 0.3s;
+    }
 `;

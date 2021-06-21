@@ -1,10 +1,19 @@
 {
   "_header_":"this is header section", 
+
   "companyName": "Nadácia Good Boy",
-    "home": "domov",
-    "about": "About Us",
-    "introText": "We are a digital agency that boosts businesses and grows startups",
-    "aboutUsText": "We strive for innovation, believe in creating creative solutions and implementing technology using simple User Experience.",
-    "pageDoesNotExist": "This page does not exist.",
-    "returnToHomepage": "Return to homepage"
+  
+  
+ "_footer_": "this is footer section",
+
+    "aboutLink": "O projekte",
+    "guideLink": "Ako na to",
+    "contactLink": "Kontak",
+    "logoTitle": "Good boy",
+    
+  
+  "_general": "general section",
+  
+   "lorem":" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in interdum ipsum, sit amet."
+    
   }

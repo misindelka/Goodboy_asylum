@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 import { translate } from './i18n';
 import { RootState } from './redux/index';
 
-import { Wrapper, LogoImage } from './styles/components/headerStyled';
+import { Wrapper, LogoImage, LinkTo } from './styles/components/headerStyled';
 import { Container } from './styles/components/generalStyled';
 import facebookLogo from './assets/facebookLogo.png';
-import instgramLogo from './assets/instagramLogo.png';
+import instagramLogo from './assets/instagramLogo.png';
 
 export const Header: React.FC = () => {
     const { language } = useSelector((state: RootState) => state.lang);
@@ -15,8 +15,12 @@ export const Header: React.FC = () => {
             <p>{translate('companyName', language)}</p>
 
             <Container>
-                <LogoImage src={facebookLogo} />
-                <LogoImage src={instgramLogo} />
+                <LinkTo to="">
+                    <LogoImage src={facebookLogo} />
+                </LinkTo>
+                <LinkTo to="">
+                    <LogoImage src={instagramLogo} />
+                </LinkTo>
             </Container>
         </Wrapper>
     );

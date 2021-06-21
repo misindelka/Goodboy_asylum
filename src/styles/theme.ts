@@ -10,18 +10,22 @@ export const headerFont = 'Public Sans';
 
 export const smallFontSize = '12px';
 export const primaryFontSize = '14px';
+export const mediumFontSize = '16px';
 export const secondaryFontSize = '18px';
+export const largeFontSize = '24px';
 
 // Opacity
 
 export const primaryOpacity = 0.9;
 
 // Paddings
+export const mediumPadding = '25px';
 export const primaryPadding = '15px';
 export const secondaryPadding = '10px';
 export const smallPadding = '5px;';
-export const sideCardPadding = '70px';
-export const wrapperTopMargin = '50px';
 
 // Size
+export const mediumIconSize = '70px';
 export const smallIconSize = '20px';
+export const smallCardSize = '105px';
+export const mediumCardSize = '170px';

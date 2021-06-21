@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import GlobalStyle from './styles/globalStyle';
 import { routes } from './router';
 import { Header } from './header';
+import { Footer } from './footer';
 
 const App: React.FC = () => {
     return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
                 ))}
             </Switch>
 
+            <Footer />
             <GlobalStyle />
         </Router>
     );

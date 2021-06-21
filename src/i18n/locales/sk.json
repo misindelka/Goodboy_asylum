@@ -1,5 +1,5 @@
 {
-  "_header_":"this is header section", 
+  "_header_": "this is header section", 
 
   "companyName": "Nadácia Good Boy",
   
@@ -12,8 +12,17 @@
     "logoTitle": "Good boy",
     
   
+ "_choose_": "this is choose section",
+
+    "chooseTitle": "Vyberte si možnosť, ako chcete pomôcť",
+    "chooseSupportAsylum": "Chcem finančne prispieť konkrétnemu útulku",
+    "cooseSupportTrust": "Chcem finančne prispieť celej nadácii",
+    "chooseAboutProject": "O Projekte",
+    "choosePriceToDonate":"Suma, ktorou chcem prispieť",
+    "chooseVoluntary":"Nepovinné",
+
   "_general": "general section",
   
-   "lorem":" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in interdum ipsum, sit amet."
-    
+   "lorem":" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in interdum ipsum, sit amet.",
+   "continueButton":"Pokračovat'"
   }

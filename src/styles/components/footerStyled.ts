@@ -33,7 +33,6 @@ export const LogoText = styled.p`
     margin-top: 0;
     font-size: ${(props) => props.theme.largeFontSize};
     font-weight: bolder;
-
     font-family: ${(props) => props.theme.headerFont};
     margin-left: ${(props) => props.theme.secondaryPadding};
 `;

@@ -55,6 +55,14 @@ module.exports = {
 		'react/no-unescaped-entities': 'off',
 		'react/require-default-props': 'off',
 		'react/jsx-props-no-spreading': 'off',
+		'prettier/prettier': ['error', { singleQuote: true, parser: 'flow' }],
+		'prettier/prettier': [
+			'error',
+			{},
+			{
+				usePrettierrc: true,
+			},
+		],
 	},
 	overrides: [
 		{

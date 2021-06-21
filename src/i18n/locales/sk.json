@@ -1,4 +1,6 @@
 {
+  "_header_":"this is header section", 
+  "companyName": "Nadácia Good Boy",
     "home": "domov",
     "about": "About Us",
     "introText": "We are a digital agency that boosts businesses and grows startups",

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { BackgroundVegTable } from '../api/images';

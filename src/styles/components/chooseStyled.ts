@@ -24,7 +24,7 @@ export const CardDesc = styled.p`
     margin-left: ${(props) => props.theme.mediumPadding};
 `;
 
-export const CardWhite = styled.div`
+export const CardWhite = styled.button<{ selected: boolean }>`
     display: flex;
     flex-direction: column;
     height: 186px;
@@ -34,20 +34,24 @@ export const CardWhite = styled.div`
     box-sizing: border-box;
     border-radius: 24px 0px 0px 24px;
     margin-top: ${(props) => props.theme.largePadding};
+    cursor: pointer;
+    background-color: ${(props) => (props.selected ? '#bcaaa4' : 'none')};
 `;
-export const CardBrown = styled.div`
+export const CardBrown = styled.div<{ selected: boolean }>`
     display: flex;
     flex-direction: column;
     height: 186px;
     width: 278px;
-    background: linear-gradient(180deg, #cd8b65 0%, #bb6b3d 100%);
+    border: 1px solid #cd8b65;
+    /* background: linear-gradient(180deg, #cd8b65 0%, #bb6b3d 100%); */
     margin-top: ${(props) => props.theme.largePadding};
-    box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.07), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198),
+    /* box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.07), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198),
         0px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275),
         0px 12.5216px 10.0172px rgba(0, 0, 0, 0.035),
         0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725),
-        0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
+        0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802); */
     border-radius: 0px 24px 24px 0px;
+    background-color: ${(props) => (props.selected ? '#bcaaa4' : 'none')};
 `;
 
 export const LinkTo = styled(NavLink)`
@@ -120,7 +124,7 @@ export const LabelContainer = styled.div`
     width: ${(props) => props.theme.largeContarinerSize};
 `;
 
-export const PriceTitle = styled.p`
+export const ValueTitle = styled.p`
     display: flex;
     margin-left: 0;
     font-family: Public Sans;
@@ -129,7 +133,7 @@ export const PriceTitle = styled.p`
     font-size: 16px;
 `;
 
-export const PriceField = styled.div`
+export const ValueField = styled.div<{ selected: boolean }>`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -137,7 +141,7 @@ export const PriceField = styled.div`
     height: 53px;
     left: 251px;
     top: 719px;
-    background: #ffffff;
+    background-color: ${(props) => (props.selected ? '#bcaaa4' : 'none')};
     border: 1px solid #dfdfdf;
     box-sizing: border-box;
     border-radius: 8px;

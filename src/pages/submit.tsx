@@ -10,7 +10,7 @@ import {
     Image,
     Title,
     TitleContainer,
-    PriceTitle as FormTitle,
+    ValueTitle as FormTitle,
     ContentContainer,
     LabelContainer,
     LinkTo,

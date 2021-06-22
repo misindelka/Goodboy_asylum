@@ -11,7 +11,7 @@ import {
     Title,
     TitleContainer,
     ContentContainer,
-    PriceTitle as FormTitle,
+    ValueTitle as FormTitle,
     LabelContainer,
     LinkTo,
 } from '../styles/components/chooseStyled';

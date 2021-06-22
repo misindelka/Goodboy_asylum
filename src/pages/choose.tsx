@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-vars */
 import * as React from 'react';
@@ -19,8 +20,8 @@ import {
     TitleContainer,
     ContentContainer,
     StyledSelect,
-    PriceField,
-    PriceTitle,
+    ValueField,
+    ValueTitle,
     LabelContainer,
     CardSelectBrown,
     CardSelectGrey,
@@ -30,11 +31,40 @@ import {
 } from '../styles/components/chooseStyled';
 import DogBg from '../assets/pageBg.png';
 
+interface IProps {
+    Asylum: boolean;
+    Trust: boolean;
+    ten: boolean;
+    five: boolean;
+    twenty: boolean;
+    fifty: boolean;
+    hundred: boolean;
+    custom: boolean;
+}
+
 export const Choose: React.FC = () => {
     const { language } = useSelector((state: RootState) => state.lang);
-
     const { shelters } = useSelector((state: IShelters) => state.shelters);
+    const [selectOption, setOption] = React.useState<IProps | any>({
+        Asylum: false,
+        Trust: true,
+    });
+    const [selectValue, setValue] = React.useState<IProps | any>({
+        ten: false,
+        five: true,
+        twenty: false,
+        fifty: false,
+        hundred: false,
+        custom: false,
+    });
 
+    const handleToggleOption = (value: string) => {
+        setOption((prev: any) => ({ [value]: !prev[value] }));
+    };
+
+    const handleToggleValue = (value: string) => {
+        setValue((prev: any) => ({ [value]: !prev[value] }));
+    };
     return (
         <>
             <Container>
@@ -56,14 +86,20 @@ export const Choose: React.FC = () => {
                     </TitleContainer>
 
                     <Container>
-                        <CardWhite>
+                        <CardWhite
+                            selected={selectOption.Asylum}
+                            onClick={() => handleToggleOption('Asylum')}
+                        >
                             <CardSelectGrey>
                                 <Icon src={Wallet} />
                             </CardSelectGrey>
                             <CardDesc>{translate('chooseSupportAsylum', language)}</CardDesc>
                         </CardWhite>
 
-                        <CardBrown>
+                        <CardBrown
+                            selected={selectOption.Trust}
+                            onClick={() => handleToggleOption('Trust')}
+                        >
                             <CardSelectBrown>
                                 <Icon src={DogFoot} />
                             </CardSelectBrown>
@@ -72,8 +108,8 @@ export const Choose: React.FC = () => {
                     </Container>
 
                     <LabelContainer>
-                        <PriceTitle>{translate('chooseAboutProject', language)}</PriceTitle>
-                        <PriceTitle>{translate('chooseVoluntary', language)}</PriceTitle>
+                        <ValueTitle>{translate('chooseAboutProject', language)}</ValueTitle>
+                        <ValueTitle>{translate('chooseVoluntary', language)}</ValueTitle>
                     </LabelContainer>
 
                     <Container>
@@ -88,17 +124,51 @@ export const Choose: React.FC = () => {
                     </Container>
 
                     <LabelContainer>
-                        <PriceTitle>{translate('choosePriceToDonate', language)}</PriceTitle>
+                        <ValueTitle>{translate('choosePriceToDonate', language)}</ValueTitle>
                     </LabelContainer>
 
                     <Container>
-                        <PriceField>5€</PriceField>
-                        <PriceField>10€</PriceField>
-                        <PriceField>20€</PriceField>
-                        <PriceField>30€</PriceField>
-                        <PriceField>50€</PriceField>
-                        <PriceField>100€</PriceField>
-                        <PriceField>...€</PriceField>
+                        <ValueField
+                            selected={selectValue.five}
+                            onClick={() => handleToggleValue('five')}
+                        >
+                            5€
+                        </ValueField>
+
+                        <ValueField
+                            selected={selectValue.ten}
+                            onClick={() => handleToggleValue('ten')}
+                        >
+                            10€
+                        </ValueField>
+
+                        <ValueField
+                            selected={selectValue.twenty}
+                            onClick={() => handleToggleValue('twenty')}
+                        >
+                            20€
+                        </ValueField>
+
+                        <ValueField
+                            selected={selectValue.fifty}
+                            onClick={() => handleToggleValue('fifty')}
+                        >
+                            50€
+                        </ValueField>
+
+                        <ValueField
+                            selected={selectValue.hundred}
+                            onClick={() => handleToggleValue('hundred')}
+                        >
+                            100€
+                        </ValueField>
+
+                        <ValueField
+                            selected={selectValue.custom}
+                            onClick={() => handleToggleValue('custom')}
+                        >
+                            ...€
+                        </ValueField>
                     </Container>
                     <LabelContainer>
                         <Container />

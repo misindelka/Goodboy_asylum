@@ -1,21 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import GlobalStyle from './styles/globalStyle';
-import { translate } from './i18n';
-import { RootState } from './redux/index';
 import { routes } from './router';
 import { Header } from './header';
+import { Footer } from './footer';
 
 const App: React.FC = () => {
-    const { language } = useSelector((state: RootState) => state.lang);
-
     return (
         <Router>
             <div>
                 <Header />
-                <p>{translate('home', language)}</p>
-                GOODBOY
             </div>
             <Switch>
                 {routes.map((route) => (
@@ -23,6 +17,7 @@ const App: React.FC = () => {
                 ))}
             </Switch>
 
+            <Footer />
             <GlobalStyle />
         </Router>
     );

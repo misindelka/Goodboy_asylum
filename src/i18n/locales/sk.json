@@ -1,8 +1,57 @@
 {
-    "home": "domov",
-    "about": "About Us",
-    "introText": "We are a digital agency that boosts businesses and grows startups",
-    "aboutUsText": "We strive for innovation, believe in creating creative solutions and implementing technology using simple User Experience.",
-    "pageDoesNotExist": "This page does not exist.",
-    "returnToHomepage": "Return to homepage"
+  "_header_": "this is header section", 
+
+  "companyName": "Nadácia Good Boy",
+  
+  
+ "_footer_": "this is footer section",
+
+    "aboutLink": "O projekte",
+    "guideLink": "Ako na to",
+    "contactLink": "Kontak",
+    "logoTitle": "Good boy",
+    
+  
+ "_choose_": "this is choose section",
+
+    "chooseTitle": "Vyberte si možnosť, ako chcete pomôcť",
+    "chooseFromList": "Vyberte útulok zo zoznamu",
+    "chooseSupportAsylum": "Chcem finančne prispieť konkrétnemu útulku",
+    "cooseSupportTrust": "Chcem finančne prispieť celej nadácii",
+    "chooseAboutProject": "O Projekte",
+    "choosePriceToDonate":"Suma, ktorou chcem prispieť",
+    "chooseVoluntary":"Nepovinné",
+
+ "_userData_": "this is userData Section",
+
+    "userDataTitle": "Potrebujeme od Vás zopár informácií",
+    "userDataFormTitle": "O vás",
+    "userName": "Meno",
+    "userNamePlaceholder": "Zadajte Vaše meno",
+    "userSurname": "Priezvisko",
+    "userSurnamePlaceholder" : "Zadajte Vaše priezvisko",
+    "userEmail": "E-mailová adresa",
+    "userEmailPlaceholder": "Zadajte Váš e-mail",
+    "userPhoneNo": "Telefónne číslo",
+    "userPhoneSk":"+421",
+  
+ "_submit": "this is submit section",
+ 
+    "submitTitle": "Skontrolujte si zadané údaje",
+    "submitSupportAsylumLabel": "Akou formou chcem pomôcť",
+    "submitAmoutLabel": "Suma ktorou chcem pomôcť",
+    "submitNameSurnameLabel": "Meno a priezvisko",
+    "submitEmailLabel": "E-mailová adresa",
+    "submitPhoneNumber": "Telefónne číslo",
+    "submitAcceptRulesLabel": "Súhlasím so spracovaním mojich osobných údajov",
+    "submitButton": "Odoslať formulár",
+
+  
+
+
+ "_general": "general section",
+  
+    "lorem":" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in interdum ipsum, sit amet.",
+    "continueButton":"Pokračovat'",
+    "backButton": "Späť"
   }

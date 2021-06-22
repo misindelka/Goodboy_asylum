@@ -1,16 +1,27 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { translate } from './i18n';
+import { RootState } from './redux/index';
+
+import { Wrapper, LogoImage, LinkTo } from './styles/components/headerStyled';
+import { Container } from './styles/components/generalStyled';
+import facebookLogo from './assets/facebookLogo.png';
+import instagramLogo from './assets/instagramLogo.png';
 
 export const Header: React.FC = () => {
+    const { language } = useSelector((state: RootState) => state.lang);
     return (
-        <div>
-            header
-            <div>
-                <Link to="./Home">Home</Link>
-                <Link to="./Choose">Choose</Link>
-                <Link to="./UserData">UserData</Link>
-                <Link to="./Submit">Home</Link>
-            </div>
-        </div>
+        <Wrapper>
+            <p>{translate('companyName', language)}</p>
+
+            <Container>
+                <LinkTo to="">
+                    <LogoImage src={facebookLogo} />
+                </LinkTo>
+                <LinkTo to="">
+                    <LogoImage src={instagramLogo} />
+                </LinkTo>
+            </Container>
+        </Wrapper>
     );
 };

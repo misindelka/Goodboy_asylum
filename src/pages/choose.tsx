@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -5,6 +7,7 @@ import { translate } from '../i18n';
 import { RootState } from '../redux/index';
 import Wallet from '../assets/wallet.png';
 import DogFoot from '../assets/dogFoot.png';
+import { IShelters } from '../redux/types';
 
 import { Container } from '../styles/components/generalStyled';
 import {
@@ -29,6 +32,9 @@ import DogBg from '../assets/pageBg.png';
 
 export const Choose: React.FC = () => {
     const { language } = useSelector((state: RootState) => state.lang);
+
+    const { shelters } = useSelector((state: IShelters) => state.shelters);
+
     return (
         <>
             <Container>
@@ -73,8 +79,11 @@ export const Choose: React.FC = () => {
                     <Container>
                         <StyledSelect>
                             <option value="">{translate('chooseFromList', language)}</option>
-                            <option value="">Pes</option>
-                            <option value="">Pejsek</option>
+                            {shelters.shelters?.map((i: IShelters) => (
+                                <option key={i.id} value="">
+                                    {i.name}
+                                </option>
+                            ))}
                         </StyledSelect>
                     </Container>
 

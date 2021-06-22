@@ -30,4 +30,6 @@ export const mediumIconSize = '70px';
 export const smallIconSize = '20px';
 export const smallCardSize = '105px';
 export const mediumCardSize = '170px';
+export const mediumInputHeight = '50px';
+export const mediumInputSize = '220px';
 export const largeContarinerSize = '550px';

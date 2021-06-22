@@ -19,6 +19,7 @@ export const ContentContainer = styled.div`
     display: flex;
     flex-direction: column;
 `;
+
 export const CardDesc = styled.p`
     margin-left: ${(props) => props.theme.mediumPadding};
 `;
@@ -32,6 +33,7 @@ export const CardWhite = styled.div`
     border: 1px solid #cd8b65;
     box-sizing: border-box;
     border-radius: 24px 0px 0px 24px;
+    margin-top: ${(props) => props.theme.largePadding};
 `;
 export const CardBrown = styled.div`
     display: flex;
@@ -39,6 +41,7 @@ export const CardBrown = styled.div`
     height: 186px;
     width: 278px;
     background: linear-gradient(180deg, #cd8b65 0%, #bb6b3d 100%);
+    margin-top: ${(props) => props.theme.largePadding};
     box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.07), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198),
         0px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275),
         0px 12.5216px 10.0172px rgba(0, 0, 0, 0.035),
@@ -75,8 +78,6 @@ export const LinkTo = styled(NavLink)`
 `;
 
 export const TitleContainer = styled.div`
-    margin: ${(props) => props.theme.largePadding};
-
     max-width: ${(props) => props.theme.largeContarinerSize};
 `;
 export const Title = styled.div`
@@ -147,7 +148,9 @@ export const PriceField = styled.div`
     margin: ${(props) => props.theme.secondaryPadding};
 `;
 
-export const Image = styled.img``;
+export const Image = styled.img`
+    margin-left: ${(props) => props.theme.largePadding};
+`;
 
 export const Icon = styled.img`
     width: 30px;

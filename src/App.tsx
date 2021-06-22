@@ -6,8 +6,6 @@ import { Header } from './header';
 import { Footer } from './footer';
 
 const App: React.FC = () => {
-    const { language } = useSelector((state: RootState) => state.lang);
-
     return (
         <Router>
             <div>

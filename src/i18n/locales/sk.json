@@ -21,18 +21,31 @@
     "choosePriceToDonate":"Suma, ktorou chcem prispieť",
     "chooseVoluntary":"Nepovinné",
 
-    "_userData_": "this is userData Section",
+ "_userData_": "this is userData Section",
 
-      "userDataTitle": "Potrebujeme od Vás zopár informácií",
-      "userDataFormTitle": "O vás",
-      "userName": "Meno",
-      "userNamePlaceholder": "Zadajte Vaše meno",
-      "userSurname": "Priezvisko",
-      "userSurnamePlaceholder" : "Zadajte Vaše priezvisko",
-      "userEmail": "E-mailová adresa",
-      "userEmailPlaceholder": "Zadajte Váš e-mail",
-      "userPhoneNo": "Telefónne číslo",
-      "userPhoneSk":"+421",
+    "userDataTitle": "Potrebujeme od Vás zopár informácií",
+    "userDataFormTitle": "O vás",
+    "userName": "Meno",
+    "userNamePlaceholder": "Zadajte Vaše meno",
+    "userSurname": "Priezvisko",
+    "userSurnamePlaceholder" : "Zadajte Vaše priezvisko",
+    "userEmail": "E-mailová adresa",
+    "userEmailPlaceholder": "Zadajte Váš e-mail",
+    "userPhoneNo": "Telefónne číslo",
+    "userPhoneSk":"+421",
+  
+ "_submit": "this is submit section",
+ 
+    "submitTitle": "Skontrolujte si zadané údaje",
+    "submitSupportAsylumLabel": "Akou formou chcem pomôcť",
+    "submitAmoutLabel": "Suma ktorou chcem pomôcť",
+    "submitNameSurnameLabel": "Meno a priezvisko",
+    "submitEmailLabel": "E-mailová adresa",
+    "submitPhoneNumber": "Telefónne číslo",
+    "submitAcceptRulesLabel": "Súhlasím so spracovaním mojich osobných údajov",
+    "submitButton": "Odoslať formulár",
+
+  
 
 
  "_general": "general section",

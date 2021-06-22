@@ -15,7 +15,7 @@ import {
     Title,
     TitleContainer,
     ContentContainer,
-    Select,
+    StyledSelect,
     PriceField,
     PriceTitle,
     LabelContainer,
@@ -42,11 +42,13 @@ export const Choose: React.FC = () => {
                     submit
                 </Link>
             </Container>
+
             <Wrapper>
                 <ContentContainer>
                     <TitleContainer>
                         <Title>{translate('chooseTitle', language)}</Title>
                     </TitleContainer>
+
                     <Container>
                         <CardWhite>
                             <CardSelectGrey>
@@ -54,6 +56,7 @@ export const Choose: React.FC = () => {
                             </CardSelectGrey>
                             <CardDesc>{translate('chooseSupportAsylum', language)}</CardDesc>
                         </CardWhite>
+
                         <CardBrown>
                             <CardSelectBrown>
                                 <Icon src={DogFoot} />
@@ -61,16 +64,24 @@ export const Choose: React.FC = () => {
                             <CardDesc>{translate('cooseSupportTrust', language)}</CardDesc>
                         </CardBrown>
                     </Container>
+
                     <LabelContainer>
                         <PriceTitle>{translate('chooseAboutProject', language)}</PriceTitle>
                         <PriceTitle>{translate('chooseVoluntary', language)}</PriceTitle>
                     </LabelContainer>
+
                     <Container>
-                        <Select>{translate('cooseSupportTrust', language)}</Select>
+                        <StyledSelect>
+                            <option value="">{translate('chooseFromList', language)}</option>
+                            <option value="">Pes</option>
+                            <option value="">Pejsek</option>
+                        </StyledSelect>
                     </Container>
+
                     <LabelContainer>
                         <PriceTitle>{translate('choosePriceToDonate', language)}</PriceTitle>
                     </LabelContainer>
+
                     <Container>
                         <PriceField>5€</PriceField>
                         <PriceField>10€</PriceField>

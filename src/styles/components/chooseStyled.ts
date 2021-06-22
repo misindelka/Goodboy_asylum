@@ -90,7 +90,7 @@ export const Title = styled.div`
     font-weight: bold;
 `;
 
-export const Select = styled.select`
+export const StyledSelect = styled.select`
     width: ${(props) => props.theme.largeContarinerSize};
     height: ${(props) => props.theme.mediumIconSize};
     background: white;

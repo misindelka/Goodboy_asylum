@@ -1,15 +1,12 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { translate } from '../i18n';
 import { RootState } from '../redux/index';
-import Wallet from '../assets/wallet.png';
-import DogFoot from '../assets/dogFoot.png';
 import { IShelters } from '../redux/types';
 
+import Wallet from '../assets/wallet.png';
+import DogFoot from '../assets/dogFoot.png';
 import { Container } from '../styles/components/generalStyled';
 import {
     Wrapper,

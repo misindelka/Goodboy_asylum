@@ -22,8 +22,8 @@ import { StyledInput, FormWrapper, InputName } from '../styles/components/userDa
 import DogBg from '../assets/pageBg.png';
 
 const initialFormData = {
-    name: '',
-    surname: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
 };
@@ -73,8 +73,8 @@ export const UserData: React.FC = () => {
                             minLength={2}
                             maxLength={20}
                             placeholder={translate('userNamePlaceholder', language)}
-                            name="name"
-                            value={formData.name}
+                            name="firstName"
+                            value={formData.firstName}
                             onChange={handleInput}
                         />
                     </FormWrapper>
@@ -85,8 +85,8 @@ export const UserData: React.FC = () => {
                             minLength={2}
                             maxLength={30}
                             placeholder={translate('userSurnamePlaceholder', language)}
-                            name="surname"
-                            value={formData.surname}
+                            name="lastName"
+                            value={formData.lastName}
                             onChange={handleInput}
                         />
                     </FormWrapper>

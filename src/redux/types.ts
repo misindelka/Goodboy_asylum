@@ -13,10 +13,12 @@ export interface IShelters {
 }
 
 export interface IFormData {
-    name: string;
-    surname: string;
+    firstName: string;
+    lastName: string;
     email: string;
     phone: string;
+    value: string;
+    shelterID: number;
 }
 interface GetSheltersAction {
     type: typeof GET_SHELTERS;

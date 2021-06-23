@@ -1,13 +1,13 @@
 import { GET_SHELTERS, ShelterAction } from '../types';
 
-const initialState = { shelters: [] };
+const initialState = {};
 
 export const sheltersReducer = (state = initialState, action: ShelterAction) => {
     switch (action.type) {
         case GET_SHELTERS:
             return {
                 ...state,
-                shelters: action.payload,
+                ...action.payload,
             };
         default:
             return state;

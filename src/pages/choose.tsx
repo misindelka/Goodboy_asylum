@@ -1,9 +1,12 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { translate } from '../i18n';
 import { RootState } from '../redux/index';
 import { IShelters } from '../redux/types';
+import { addFormData } from '../redux/actions/formAction';
 
 import Wallet from '../assets/wallet.png';
 import DogFoot from '../assets/dogFoot.png';
@@ -29,13 +32,23 @@ import {
 } from '../styles/components/chooseStyled';
 import DogBg from '../assets/pageBg.png';
 
+const initialOptionsValue = {
+    shelterOption: '',
+    shelterID: '',
+    value: '',
+};
+
 export const Choose: React.FC = () => {
     const { language } = useSelector((state: RootState) => state.lang);
     const { shelters } = useSelector((state: IShelters) => state.shelters);
-    const [selectedOption, setOption] = React.useState('');
-    const [selectedValue, setValue] = React.useState('');
-    const [selectedShleter, setShelter] = React.useState('0');
 
+    const [options, setOptions] = React.useState<any>(initialOptionsValue);
+
+    const dispatch = useDispatch();
+
+    const submitData = (data: any) => {
+        dispatch(addFormData(data));
+    };
     return (
         <>
             <Container>
@@ -59,10 +72,14 @@ export const Choose: React.FC = () => {
                     <Container>
                         <CardWhite
                             selected={
-                                selectedOption === `${translate('chooseSupportShelter', language)}`
+                                options.shelterOption ===
+                                `${translate('chooseSupportShelter', language)}`
                             }
                             onClick={() =>
-                                setOption(`${translate('chooseSupportShelter', language)}`)
+                                setOptions({
+                                    ...options,
+                                    shelterOption: `${translate('chooseSupportShelter', language)}`,
+                                })
                             }
                         >
                             <CardSelectGrey>
@@ -73,9 +90,16 @@ export const Choose: React.FC = () => {
 
                         <CardBrown
                             selected={
-                                selectedOption === `${translate('cooseSupportTrust', language)}`
+                                options.shelterOption ===
+                                `${translate('cooseSupportTrust', language)}`
                             }
-                            onClick={() => setOption(`${translate('cooseSupportTrust', language)}`)}
+                            onClick={() =>
+                                setOptions({
+                                    ...options,
+                                    shelterOption: `${translate('cooseSupportTrust', language)}`,
+                                    shelterID: 0,
+                                })
+                            }
                         >
                             <CardSelectBrown>
                                 <Icon src={DogFoot} />
@@ -84,7 +108,7 @@ export const Choose: React.FC = () => {
                         </CardBrown>
                     </Container>
 
-                    {selectedOption === `${translate('chooseSupportShelter', language)}` && (
+                    {options.shelterOption === `${translate('chooseSupportShelter', language)}` && (
                         <>
                             <LabelContainer>
                                 <ValueTitle>{translate('chooseAboutProject', language)}</ValueTitle>
@@ -93,11 +117,17 @@ export const Choose: React.FC = () => {
 
                             <Container>
                                 <StyledSelect
-                                    value={selectedShleter}
-                                    onChange={(e: any) => setShelter(e.target.value)}
+                                    value={options.shelterID}
+                                    onChange={(e: any) =>
+                                        setOptions({
+                                            ...options,
+
+                                            shelterID: parseFloat(e.target.value),
+                                        })
+                                    }
                                 >
                                     <option> {translate('chooseFromList', language)}</option>
-                                    {shelters.shelters?.map((i: IShelters) => (
+                                    {shelters?.map((i: IShelters) => (
                                         <option key={i.id} value={i.id}>
                                             {i.name}
                                         </option>
@@ -112,53 +142,58 @@ export const Choose: React.FC = () => {
                     </LabelContainer>
 
                     <Container>
-                        <ValueField selected={selectedValue === '5'} onClick={() => setValue('5')}>
+                        <ValueField
+                            selected={options.value === '5'}
+                            onClick={() => setOptions({ ...options, value: '5' })}
+                        >
                             5€
                         </ValueField>
 
                         <ValueField
-                            selected={selectedValue === '10'}
-                            onClick={() => setValue('10')}
+                            selected={options.value === '10'}
+                            onClick={() => setOptions({ ...options, value: '10' })}
                         >
                             10€
                         </ValueField>
 
                         <ValueField
-                            selected={selectedValue === '20'}
-                            onClick={() => setValue('20')}
+                            selected={options.value === '20'}
+                            onClick={() => setOptions({ ...options, value: '20' })}
                         >
                             20€
                         </ValueField>
 
                         <ValueField
-                            selected={selectedValue === '50'}
-                            onClick={() => setValue('50')}
+                            selected={options.value === '50'}
+                            onClick={() => setOptions({ ...options, value: '50' })}
                         >
                             50€
                         </ValueField>
 
                         <ValueField
-                            selected={selectedValue === '100'}
-                            onClick={() => setValue('100')}
+                            selected={options.value === '100'}
+                            onClick={() => setOptions({ ...options, value: '100' })}
                         >
                             100€
                         </ValueField>
 
                         <ValueField
-                            selected={selectedValue === 'custom'}
-                            onClick={() => setValue('custom')}
+                            selected={options.value === 'custom'}
+                            onClick={() => setOptions({ ...options, value: 'custom' })}
                         >
                             <InputValueField
                                 type="text"
                                 placeholder="..."
-                                onChange={(e: any) => setValue(e.target.value)}
+                                onChange={(e: any) => setOptions(e.target.value)}
                             />
                             €
                         </ValueField>
                     </Container>
                     <LabelContainer>
                         <Container />
-                        <LinkTo to="./UserData">{translate('continueButton', language)}</LinkTo>
+                        <LinkTo to="./UserData" onClick={() => submitData(options)}>
+                            {translate('continueButton', language)}
+                        </LinkTo>
                     </LabelContainer>
                 </ContentContainer>
 

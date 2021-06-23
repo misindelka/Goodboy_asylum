@@ -12,6 +12,6 @@ export const StyledCheckbox = styled.input`
     height: 34px;
 `;
 
-export const CheckedLabel = styled.p`
+export const Label = styled.p`
     margin-left: ${(props) => props.theme.secondaryPadding}; ;
 `;

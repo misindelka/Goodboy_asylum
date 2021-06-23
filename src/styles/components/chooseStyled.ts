@@ -164,6 +164,7 @@ export const InputValueField = styled.input`
 
 export const Image = styled.img`
     margin-left: ${(props) => props.theme.largePadding};
+    max-height: 800px;
 `;
 
 export const Icon = styled.img`

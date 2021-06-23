@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 
-import { Choose } from './pages/choose';
-import { UserData } from './pages/userData';
-import { Submit } from './pages/submit';
+import { Choose } from './pages/chooseSupport';
+import { UserData } from './pages/userDataForm';
+import { Submit } from './pages/submitSupport';
 
 export const routes = [
 	{

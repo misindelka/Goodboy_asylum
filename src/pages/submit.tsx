@@ -42,7 +42,7 @@ export const Submit: React.FC = () => {
                     </TitleContainer>
 
                     <LabelContainer>
-                        <FormTitle>{translate('submitSupportAsylumLabel', language)}</FormTitle>
+                        <FormTitle>{translate('submitSupportShelterLabel', language)}</FormTitle>
                     </LabelContainer>
 
                     <LabelContainer>

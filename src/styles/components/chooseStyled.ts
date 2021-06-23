@@ -152,6 +152,16 @@ export const ValueField = styled.div<{ selected: boolean }>`
     margin: ${(props) => props.theme.secondaryPadding};
 `;
 
+export const InputValueField = styled.input`
+    width: 24px;
+    height: 23px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 800;
+    font-family: Public Sans;
+`;
+
 export const Image = styled.img`
     margin-left: ${(props) => props.theme.largePadding};
 `;

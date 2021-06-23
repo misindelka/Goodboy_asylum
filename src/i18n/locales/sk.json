@@ -16,7 +16,7 @@
 
     "chooseTitle": "Vyberte si možnosť, ako chcete pomôcť",
     "chooseFromList": "Vyberte útulok zo zoznamu",
-    "chooseSupportAsylum": "Chcem finančne prispieť konkrétnemu útulku",
+    "chooseSupportShelter": "Chcem finančne prispieť konkrétnemu útulku",
     "cooseSupportTrust": "Chcem finančne prispieť celej nadácii",
     "chooseAboutProject": "O Projekte",
     "choosePriceToDonate":"Suma, ktorou chcem prispieť",
@@ -38,7 +38,7 @@
  "_submit": "this is submit section",
  
     "submitTitle": "Skontrolujte si zadané údaje",
-    "submitSupportAsylumLabel": "Akou formou chcem pomôcť",
+    "submitSupportShelterLabel": "Akou formou chcem pomôcť",
     "submitAmoutLabel": "Suma ktorou chcem pomôcť",
     "submitNameSurnameLabel": "Meno a priezvisko",
     "submitEmailLabel": "E-mailová adresa",

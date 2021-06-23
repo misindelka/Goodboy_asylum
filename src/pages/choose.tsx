@@ -28,43 +28,17 @@ import {
     Icon,
     LinkTo,
     CardDesc,
+    InputValueField,
 } from '../styles/components/chooseStyled';
 import DogBg from '../assets/pageBg.png';
-
-interface IProps {
-    Asylum: boolean;
-    Trust: boolean;
-    ten: boolean;
-    five: boolean;
-    twenty: boolean;
-    fifty: boolean;
-    hundred: boolean;
-    custom: boolean;
-}
 
 export const Choose: React.FC = () => {
     const { language } = useSelector((state: RootState) => state.lang);
     const { shelters } = useSelector((state: IShelters) => state.shelters);
-    const [selectOption, setOption] = React.useState<IProps | any>({
-        Asylum: false,
-        Trust: true,
-    });
-    const [selectValue, setValue] = React.useState<IProps | any>({
-        ten: false,
-        five: true,
-        twenty: false,
-        fifty: false,
-        hundred: false,
-        custom: false,
-    });
+    const [selectedOption, setOption] = React.useState('');
+    const [selectedValue, setValue] = React.useState('');
+    const [selectedShleter, setShelter] = React.useState('0');
 
-    const handleToggleOption = (value: string) => {
-        setOption((prev: any) => ({ [value]: !prev[value] }));
-    };
-
-    const handleToggleValue = (value: string) => {
-        setValue((prev: any) => ({ [value]: !prev[value] }));
-    };
     return (
         <>
             <Container>
@@ -87,18 +61,24 @@ export const Choose: React.FC = () => {
 
                     <Container>
                         <CardWhite
-                            selected={selectOption.Asylum}
-                            onClick={() => handleToggleOption('Asylum')}
+                            selected={
+                                selectedOption === `${translate('chooseSupportShelter', language)}`
+                            }
+                            onClick={() =>
+                                setOption(`${translate('chooseSupportShelter', language)}`)
+                            }
                         >
                             <CardSelectGrey>
                                 <Icon src={Wallet} />
                             </CardSelectGrey>
-                            <CardDesc>{translate('chooseSupportAsylum', language)}</CardDesc>
+                            <CardDesc>{translate('chooseSupportShelter', language)}</CardDesc>
                         </CardWhite>
 
                         <CardBrown
-                            selected={selectOption.Trust}
-                            onClick={() => handleToggleOption('Trust')}
+                            selected={
+                                selectedOption === `${translate('cooseSupportTrust', language)}`
+                            }
+                            onClick={() => setOption(`${translate('cooseSupportTrust', language)}`)}
                         >
                             <CardSelectBrown>
                                 <Icon src={DogFoot} />
@@ -107,67 +87,76 @@ export const Choose: React.FC = () => {
                         </CardBrown>
                     </Container>
 
-                    <LabelContainer>
-                        <ValueTitle>{translate('chooseAboutProject', language)}</ValueTitle>
-                        <ValueTitle>{translate('chooseVoluntary', language)}</ValueTitle>
-                    </LabelContainer>
+                    {selectedOption === `${translate('chooseSupportShelter', language)}` && (
+                        <>
+                            <LabelContainer>
+                                <ValueTitle>{translate('chooseAboutProject', language)}</ValueTitle>
+                                <ValueTitle>{translate('chooseVoluntary', language)}</ValueTitle>
+                            </LabelContainer>
 
-                    <Container>
-                        <StyledSelect>
-                            <option value="">{translate('chooseFromList', language)}</option>
-                            {shelters.shelters?.map((i: IShelters) => (
-                                <option key={i.id} value="">
-                                    {i.name}
-                                </option>
-                            ))}
-                        </StyledSelect>
-                    </Container>
+                            <Container>
+                                <StyledSelect
+                                    value={selectedShleter}
+                                    onChange={(e: any) => setShelter(e.target.value)}
+                                >
+                                    <option> {translate('chooseFromList', language)}</option>
+                                    {shelters.shelters?.map((i: IShelters) => (
+                                        <option key={i.id} value={i.id}>
+                                            {i.name}
+                                        </option>
+                                    ))}
+                                </StyledSelect>
+                            </Container>
+                        </>
+                    )}
 
                     <LabelContainer>
                         <ValueTitle>{translate('choosePriceToDonate', language)}</ValueTitle>
                     </LabelContainer>
 
                     <Container>
-                        <ValueField
-                            selected={selectValue.five}
-                            onClick={() => handleToggleValue('five')}
-                        >
+                        <ValueField selected={selectedValue === '5'} onClick={() => setValue('5')}>
                             5€
                         </ValueField>
 
                         <ValueField
-                            selected={selectValue.ten}
-                            onClick={() => handleToggleValue('ten')}
+                            selected={selectedValue === '10'}
+                            onClick={() => setValue('10')}
                         >
                             10€
                         </ValueField>
 
                         <ValueField
-                            selected={selectValue.twenty}
-                            onClick={() => handleToggleValue('twenty')}
+                            selected={selectedValue === '20'}
+                            onClick={() => setValue('20')}
                         >
                             20€
                         </ValueField>
 
                         <ValueField
-                            selected={selectValue.fifty}
-                            onClick={() => handleToggleValue('fifty')}
+                            selected={selectedValue === '50'}
+                            onClick={() => setValue('50')}
                         >
                             50€
                         </ValueField>
 
                         <ValueField
-                            selected={selectValue.hundred}
-                            onClick={() => handleToggleValue('hundred')}
+                            selected={selectedValue === '100'}
+                            onClick={() => setValue('100')}
                         >
                             100€
                         </ValueField>
 
                         <ValueField
-                            selected={selectValue.custom}
-                            onClick={() => handleToggleValue('custom')}
+                            selected={selectedValue === 'custom'}
+                            onClick={() => setValue('custom')}
                         >
-                            ...€
+                            <InputValueField
+                                type="text"
+                                placeholder="..."
+                                onChange={(e: any) => setValue(e.target.value)}
+                            />
+                            €
                         </ValueField>
                     </Container>
                     <LabelContainer>

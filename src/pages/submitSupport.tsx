@@ -20,14 +20,15 @@ import { StyledCheckbox, CheckedWrapper, Label } from '../styles/components/subm
 import DogBg from '../assets/pageBg.png';
 import { IShelters } from '../redux/types';
 
-export const Submit: React.FC = () => {
+export const SubmitSupport: React.FC = () => {
     const { language } = useSelector((state: RootState) => state.lang);
     const formData = useSelector((state: RootState) => state.formData);
     const { shelters } = useSelector((state: IShelters) => state.shelters);
+    const [checked, setChecked] = React.useState(false);
 
-    const selectedShelter = shelters?.filter((i: any) => i.id === formData.shelterID);
+    const selectedShelter = shelters?.filter((i: IShelters) => i.id === formData.shelterID);
 
-    console.log(selectedShelter?.map((i: any) => i.name));
+    console.log(selectedShelter?.map((i: IShelters) => i.name));
     return (
         <>
             <Container>
@@ -81,9 +82,8 @@ export const Submit: React.FC = () => {
                     <CheckedWrapper>
                         <StyledCheckbox
                             type="checkbox"
-                            id="vehicle1"
-                            name="vehicle1"
-                            value="Bike"
+                            defaultChecked={checked}
+                            onChange={() => setChecked(!checked)}
                         />
                         <Label>{translate('submitTitle', language)}</Label>
                     </CheckedWrapper>

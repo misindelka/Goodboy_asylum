@@ -38,7 +38,7 @@ const initialOptionsValue = {
     value: '',
 };
 
-export const Choose: React.FC = () => {
+export const ChooseSupport: React.FC = () => {
     const { language } = useSelector((state: RootState) => state.lang);
     const { shelters } = useSelector((state: IShelters) => state.shelters);
 
@@ -191,7 +191,7 @@ export const Choose: React.FC = () => {
                     </Container>
                     <LabelContainer>
                         <Container />
-                        <LinkTo to="./UserData" onClick={() => submitData(options)}>
+                        <LinkTo to="./UserDataForm" onClick={() => submitData(options)}>
                             {translate('continueButton', language)}
                         </LinkTo>
                     </LabelContainer>

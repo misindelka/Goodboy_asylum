@@ -28,7 +28,7 @@ const initialFormData = {
     phone: '',
 };
 
-export const UserData: React.FC = () => {
+export const UserDataForm: React.FC = () => {
     const { language } = useSelector((state: RootState) => state.lang);
     const [formData, setForm] = React.useState(initialFormData);
 
@@ -114,8 +114,8 @@ export const UserData: React.FC = () => {
                     </FormWrapper>
 
                     <LabelContainer>
-                        <LinkTo to="./Choose">{translate('backButton', language)}</LinkTo>
-                        <LinkTo to="./Submit" onClick={() => submitForm(formData)}>
+                        <LinkTo to="./ChooseSupport">{translate('backButton', language)}</LinkTo>
+                        <LinkTo to="./SubmitSupport" onClick={() => submitForm(formData)}>
                             {translate('continueButton', language)}
                         </LinkTo>
                     </LabelContainer>

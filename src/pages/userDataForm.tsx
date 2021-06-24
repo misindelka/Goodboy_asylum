@@ -114,8 +114,14 @@ export const UserDataForm: React.FC = () => {
                     </FormWrapper>
 
                     <LabelContainer>
-                        <LinkTo to="./ChooseSupport">{translate('backButton', language)}</LinkTo>
-                        <LinkTo to="./SubmitSupport" onClick={() => submitForm(formData)}>
+                        <LinkTo back to="./ChooseSupport">
+                            {translate('backButton', language)}
+                        </LinkTo>
+                        <LinkTo
+                            back={false}
+                            to="./SubmitSupport"
+                            onClick={() => submitForm(formData)}
+                        >
                             {translate('continueButton', language)}
                         </LinkTo>
                     </LabelContainer>

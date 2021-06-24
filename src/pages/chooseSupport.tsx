@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { translate } from '../i18n';
 import { RootState } from '../redux/index';
-import { IShelters } from '../redux/types';
+import { IFormData, IShelters } from '../redux/types';
 import { addFormData } from '../redux/actions/formAction';
 
 import Wallet from '../assets/wallet.png';
@@ -13,8 +13,7 @@ import DogFoot from '../assets/dogFoot.png';
 import { Container } from '../styles/components/generalStyled';
 import {
     Wrapper,
-    CardWhite,
-    CardBrown,
+    DonationCard,
     Image,
     Title,
     TitleContainer,
@@ -29,24 +28,28 @@ import {
     LinkTo,
     CardDesc,
     InputValueField,
+    Value,
 } from '../styles/components/chooseStyled';
 import DogBg from '../assets/pageBg.png';
 
 const initialOptionsValue = {
     shelterOption: '',
-    shelterID: '',
+    shelterID: 0,
     value: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
 };
 
 export const ChooseSupport: React.FC = () => {
     const { language } = useSelector((state: RootState) => state.lang);
     const { shelters } = useSelector((state: IShelters) => state.shelters);
-
-    const [options, setOptions] = React.useState<any>(initialOptionsValue);
+    const [options, setOptions] = React.useState<IFormData>(initialOptionsValue);
 
     const dispatch = useDispatch();
 
-    const submitData = (data: any) => {
+    const submitData = (data: IFormData) => {
         dispatch(addFormData(data));
     };
     return (
@@ -70,7 +73,8 @@ export const ChooseSupport: React.FC = () => {
                     </TitleContainer>
 
                     <Container>
-                        <CardWhite
+                        <DonationCard
+                            left
                             selected={
                                 options.shelterOption ===
                                 `${translate('chooseSupportShelter', language)}`
@@ -86,9 +90,10 @@ export const ChooseSupport: React.FC = () => {
                                 <Icon src={Wallet} />
                             </CardSelectGrey>
                             <CardDesc>{translate('chooseSupportShelter', language)}</CardDesc>
-                        </CardWhite>
+                        </DonationCard>
 
-                        <CardBrown
+                        <DonationCard
+                            left={false}
                             selected={
                                 options.shelterOption ===
                                 `${translate('cooseSupportTrust', language)}`
@@ -105,7 +110,7 @@ export const ChooseSupport: React.FC = () => {
                                 <Icon src={DogFoot} />
                             </CardSelectBrown>
                             <CardDesc>{translate('cooseSupportTrust', language)}</CardDesc>
-                        </CardBrown>
+                        </DonationCard>
                     </Container>
 
                     {options.shelterOption === `${translate('chooseSupportShelter', language)}` && (
@@ -146,35 +151,35 @@ export const ChooseSupport: React.FC = () => {
                             selected={options.value === '5'}
                             onClick={() => setOptions({ ...options, value: '5' })}
                         >
-                            5€
+                            <Value>5€</Value>
                         </ValueField>
 
                         <ValueField
                             selected={options.value === '10'}
                             onClick={() => setOptions({ ...options, value: '10' })}
                         >
-                            10€
+                            <Value>10€</Value>
                         </ValueField>
 
                         <ValueField
                             selected={options.value === '20'}
                             onClick={() => setOptions({ ...options, value: '20' })}
                         >
-                            20€
+                            <Value>20€</Value>
                         </ValueField>
 
                         <ValueField
                             selected={options.value === '50'}
                             onClick={() => setOptions({ ...options, value: '50' })}
                         >
-                            50€
+                            <Value>50€</Value>
                         </ValueField>
 
                         <ValueField
                             selected={options.value === '100'}
                             onClick={() => setOptions({ ...options, value: '100' })}
                         >
-                            100€
+                            <Value>100€</Value>
                         </ValueField>
 
                         <ValueField
@@ -191,7 +196,11 @@ export const ChooseSupport: React.FC = () => {
                     </Container>
                     <LabelContainer>
                         <Container />
-                        <LinkTo to="./UserDataForm" onClick={() => submitData(options)}>
+                        <LinkTo
+                            back={false}
+                            to="./UserDataForm"
+                            onClick={() => submitData(options)}
+                        >
                             {translate('continueButton', language)}
                         </LinkTo>
                     </LabelContainer>

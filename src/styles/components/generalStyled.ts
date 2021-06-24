@@ -4,20 +4,19 @@ export const Container = styled.div`
     display: flex;
 `;
 
-export const SliderRectangleBrown = styled.div`
-    width: 43.77px;
-    height: 6px;
-    left: 0px;
-    background: linear-gradient(94.75deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0) 100.7%), #cd8b65;
-    border-radius: 10px;
+export const SliderRectangleWrapper = styled.div`
+    display: flex;
+    margin-bottom: 20px;
+    padding-left: 17px;
+    @media (max-width: 992px) {
+        justify-content: center;
+        padding-left: 0px;
+    }
 `;
-
-export const SliderRectangleSilver = styled.div`
-    width: 20.6px;
+export const SliderRectangle = styled.div<{ active: boolean }>`
     height: 6px;
-    left: 48.77px;
-    bottom: 0px;
-    background: #9f9f9f;
-    opacity: 0.36;
+    width: ${(props) => (props.active ? '40px' : '20px')};
+    background: ${(props) => (props.active ? '#CD8B65' : '#9F9F9F')};
     border-radius: 10px;
+    margin-right: 5px;
 `;

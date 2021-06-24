@@ -1,0 +1,15 @@
+import * as React from 'react';
+
+import { SliderRectangle, SliderRectangleWrapper } from '../styles/components/generalStyled';
+
+export const ReactangleSlider = () => {
+    const [slider, setSlider] = React.useState('');
+
+    return (
+        <SliderRectangleWrapper>
+            {Array.from({ length: Number(maxIndex) }).map((stepIndex, index) => {
+                return <SliderRectangle key={index} highlighted={step === index + 1} />;
+            })}
+        </SliderRectangleWrapper>
+    );
+};

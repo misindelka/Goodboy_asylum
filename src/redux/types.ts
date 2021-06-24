@@ -13,6 +13,7 @@ export interface IShelters {
 }
 
 export interface IFormData {
+    shelterOption: string;
     firstName: string;
     lastName: string;
     email: string;

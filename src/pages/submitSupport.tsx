@@ -28,7 +28,6 @@ export const SubmitSupport: React.FC = () => {
 
     const selectedShelter = shelters?.filter((i: IShelters) => i.id === formData.shelterID);
 
-    console.log(selectedShelter?.map((i: IShelters) => i.name));
     return (
         <>
             <Container>
@@ -82,14 +81,20 @@ export const SubmitSupport: React.FC = () => {
                     <CheckedWrapper>
                         <StyledCheckbox
                             type="checkbox"
+                            color="rgba(47,47,47,0.8)"
                             defaultChecked={checked}
                             onChange={() => setChecked(!checked)}
                         />
                         <Label>{translate('submitTitle', language)}</Label>
                     </CheckedWrapper>
+
                     <LabelContainer>
-                        <LinkTo to="./UserData">{translate('backButton', language)}</LinkTo>
-                        <LinkTo to="./Submit">{translate('submitButton', language)}</LinkTo>
+                        <LinkTo back to="./UserDataForm">
+                            {translate('backButton', language)}
+                        </LinkTo>
+                        <LinkTo back={false} to="./ChooseSupport">
+                            {translate('submitButton', language)}
+                        </LinkTo>
                     </LabelContainer>
                 </ContentContainer>
 

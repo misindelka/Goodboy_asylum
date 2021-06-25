@@ -1,8 +1,8 @@
-Nadácia Good boy - support section
+## Nadácia Good boy - support section
 
 This project was bootstrapped with [Create React App] yarn create react-app my-app --template typescript
 
-## Available Scripts
+### Available Scripts
 
 To run this project clone repository to your computer and yarn to install all dependencies
 

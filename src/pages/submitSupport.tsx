@@ -84,9 +84,11 @@ export const SubmitSupport: React.FC = () => {
                         <LinkTo back to="./UserDataForm">
                             {translate('backButton', language)}
                         </LinkTo>
-                        <LinkTo back={false} to="./ChooseSupport" onClick={handleSubmitSupport}>
-                            {translate('submitButton', language)}
-                        </LinkTo>
+                        {checked && (
+                            <LinkTo back={false} to="./ChooseSupport" onClick={handleSubmitSupport}>
+                                {translate('submitButton', language)}
+                            </LinkTo>
+                        )}
                     </LabelContainer>
                 </ContentContainer>
 

@@ -6,6 +6,7 @@ import GlobalStyle from './styles/globalStyle';
 import { routes } from './router';
 import { Header } from './header';
 import { Footer } from './footer';
+import { ChooseSupport } from './pages/chooseSupport';
 
 const App: React.FC = () => {
     const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const App: React.FC = () => {
                 <Header />
             </div>
             <Switch>
+                <Route exact path="/" component={ChooseSupport} />
                 {routes.map((route) => (
                     <Route key={route.path} path={route.path} component={route.component} />
                 ))}

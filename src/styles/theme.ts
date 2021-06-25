@@ -1,6 +1,8 @@
 // Colors
 export const headerBg = '#f5f5f5';
 export const secondaryTextGrey = '#9F9F9F';
+export const cardBgBrown = 'linear-gradient(180deg, #CD8B65 0%, #BB6B3D 100%);';
+export const linkSecondary = '#F3E2D9';
 
 // Fonts
 export const fontFamily = 'Segoe UI';

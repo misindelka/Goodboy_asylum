@@ -1,23 +1,23 @@
 /* eslint-disable prettier/prettier */
 
-import { Choose } from './pages/choose';
-import { UserData } from './pages/userData';
-import { Submit } from './pages/submit';
+import { ChooseSupport } from './pages/chooseSupport';
+import { UserDataForm } from './pages/userDataForm';
+import { SubmitSupport } from './pages/submitSupport';
 
 export const routes = [
 	{
-		path: '/Choose',
-		component: Choose,
+		path: '/ChooseSupport',
+		component: ChooseSupport,
 		routeName: 'ChooseHelp',
 	},
 	{
-		path: '/UserData',
-		component: UserData,
+		path: '/UserDataForm',
+		component: UserDataForm,
 		routeName: 'UserData',
 	},
 	{
-		path: '/Submit',
-		component: Submit,
+		path: '/SubmitSupport',
+		component: SubmitSupport,
 		routeName: 'Submit',
 	},
 ];

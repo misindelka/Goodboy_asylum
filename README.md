@@ -1,6 +1,7 @@
 ## Nadácia Good boy - support section
 
 This project was bootstrapped with [Create React App] yarn create react-app my-app --template typescript
+using react-redux , styled-components, formik-npm, yup-npm
 
 ### Available Scripts
 

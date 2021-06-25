@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+Nadácia Good boy - support section
 
 This project was bootstrapped with [Create React App] yarn create react-app my-app --template typescript
 

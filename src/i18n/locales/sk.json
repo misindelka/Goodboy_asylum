@@ -33,8 +33,18 @@
     "userEmail": "E-mailová adresa",
     "userEmailPlaceholder": "Zadajte Váš e-mail",
     "userPhoneNo": "Telefónne číslo",
-    "userPhoneSk":"+421",
-  
+    "userPhoneSk": "+421",
+    "userNameErrorShort": "meno je príliš krátke",
+    "userNameErrorLong" : "meno je príliš dlhé ",
+    "userSurnameErrorShort" : "priezvisko je príliš krátke",
+    "userSurnameErrorLong" :"priezvisko je príliš dlhé ",
+    "userMailError" : "nesprávny formát",
+    "userMailErrorRequired": "povinné pole",
+    "userPhoneError": "nesprávny formát",
+    "userFormTermsAgreemet": "súhhlasím so spracovaním osobnych údajou",
+    "userFromConfirmSubmitMessage": "pred pokračováním potvrdte súhlas so spracováním  osobnych údajou",
+    "userAgreementButton" :"Potvrdit",
+
  "_submit": "this is submit section",
  
     "submitTitle": "Skontrolujte si zadané údaje",

@@ -22,6 +22,7 @@ export const StyledInput = styled(Field)`
 export const InputName = styled.p`
     display: flex;
     margin: 0;
+    width: 400px;
 `;
 
 export const StyledForm = styled.form`
@@ -37,4 +38,35 @@ export const StyledForm = styled.form`
 export const InputWrapper = styled.div`
     display: flex;
     flex-direction: row;
+`;
+
+export const SubmitWrapper = styled.div`
+    display: flex;
+    border-radius: 8px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: ${(props) => props.theme.mediumInputHeight};
+    margin-top: 50px;
+`;
+
+export const SubmitFormButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    margin-right: 20px;
+    font-size: ${(props) => props.theme.primaryFontSize};
+    width: 124px;
+    height: 39px;
+    background: ${(props) => props.theme.cardBgBrown};
+    border-radius: 100px;
+    text-decoration: none;
+    border: none;
+    :hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: transform 0.3s;
+    }
 `;

@@ -64,18 +64,6 @@ export const ChooseSupport: React.FC = () => {
     };
     return (
         <>
-            <Container>
-                <Link to="./Choose" style={{ margin: '10px' }}>
-                    Choose
-                </Link>
-                <Link to="./UserData" style={{ margin: '10px' }}>
-                    UserData
-                </Link>
-                <Link to="./Submit" style={{ margin: '10px' }}>
-                    submit
-                </Link>
-            </Container>
-
             <Wrapper>
                 <ContentContainer>
                     <TitleContainer>

@@ -28,23 +28,39 @@ import {
     FormWrapper,
     InputName,
     InputWrapper,
+    SubmitFormButton,
+    SubmitWrapper,
 } from '../styles/components/userDataStyled';
 import DogBg from '../assets/pageBg.png';
-import { IFormData } from '../redux/types';
 
 export const UserDataForm: React.FC = () => {
     const { language } = useSelector((state: RootState) => state.lang);
     const [country, setCountry] = React.useState('');
+    const [terms, setTerms] = React.useState(false);
 
     const dispatch = useDispatch();
 
+    const handleSubmitAlert = () => {
+        // eslint-disable-next-line no-lone-blocks
+        {
+            alert(`${translate('userFromConfirmSubmitMessage', language)}`);
+        }
+    };
+
     const FormSchema = Yup.object().shape({
-        firstName: Yup.string().min(2, 'Príliš krátke!').max(20, 'Príliš dlhé!'),
-        lastName: Yup.string().min(2, 'Príliš krátke!').max(30, 'Príliš dlhé!').required('Povinné'),
-        email: Yup.string().email('Nesprávny formát').required('Povinné'),
+        firstName: Yup.string()
+            .min(2, `${translate('userNameErrorShort', language)}`)
+            .max(20, `${translate('userNameErrorLong', language)}`),
+        lastName: Yup.string()
+            .min(2, `${translate('userSurnameErrorShort', language)}`)
+            .max(30, `${translate('userSurnameErrorShort', language)}`)
+            .required(`${translate('userMailErrorRequired', language)}`),
+        email: Yup.string()
+            .email(`${translate('userMailError', language)}`)
+            .required(`${translate('userMailErrorRequired', language)}`),
         phone: Yup.string().matches(
             /^(\+420|\+421)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$/,
-            'Nesprávny formát',
+            `${translate('userMailError', language)}`,
         ),
     });
 
@@ -60,17 +76,6 @@ export const UserDataForm: React.FC = () => {
     };
     return (
         <>
-            <Container>
-                <Link to="./Choose" style={{ margin: '10px' }}>
-                    Choose
-                </Link>
-                <Link to="./UserData" style={{ margin: '10px' }}>
-                    UserData
-                </Link>
-                <Link to="./Submit" style={{ margin: '10px' }}>
-                    submit
-                </Link>
-            </Container>
             <Wrapper>
                 <Formik
                     initialValues={{
@@ -104,53 +109,92 @@ export const UserDataForm: React.FC = () => {
                             <Form>
                                 <FormWrapper>
                                     <InputName>{translate('userName', language)}</InputName>
-
-                                    <StyledInput
-                                        placeholder={translate('userNamePlaceholder', language)}
-                                        name="firstName"
-                                    />
-
-                                    <ErrorMessage name="firstName" />
+                                    <InputWrapper>
+                                        <StyledInput
+                                            placeholder={translate('userNamePlaceholder', language)}
+                                            name="firstName"
+                                        />
+                                        <ErrorMessage name="firstName" />
+                                    </InputWrapper>
                                 </FormWrapper>
 
                                 <FormWrapper>
                                     <InputName>{translate('userSurname', language)}</InputName>
 
-                                    <StyledInput
-                                        placeholder={translate('userSurnamePlaceholder', language)}
-                                        name="lastName"
-                                    />
+                                    <InputWrapper>
+                                        <StyledInput
+                                            placeholder={translate(
+                                                'userSurnamePlaceholder',
+                                                language,
+                                            )}
+                                            name="lastName"
+                                        />
+                                        <ErrorMessage name="lastName" />
+                                    </InputWrapper>
                                 </FormWrapper>
-                                <ErrorMessage name="lastName" />
 
                                 <FormWrapper>
                                     <InputName>{translate('userEmail', language)}</InputName>
-                                    <StyledInput
-                                        placeholder={translate('userEmailPlaceholder', language)}
-                                        name="email"
-                                    />
+                                    <InputWrapper>
+                                        <StyledInput
+                                            placeholder={translate(
+                                                'userEmailPlaceholder',
+                                                language,
+                                            )}
+                                            name="email"
+                                        />
+                                        <ErrorMessage name="email" />
+                                    </InputWrapper>
                                 </FormWrapper>
-                                <ErrorMessage name="email" />
 
                                 <FormWrapper>
                                     <InputName>{translate('userPhoneNo', language)}</InputName>
-                                    <StyledInput
-                                        placeholder={translate('userPhoneSk', language)}
-                                        name="phone"
-                                    />
-                                    <img src={countryFlag()} />
+                                    <InputWrapper>
+                                        <img src={countryFlag()} />
+                                        <StyledInput
+                                            placeholder={translate('userPhoneSk', language)}
+                                            name="phone"
+                                        />
+                                        <ErrorMessage name="phone" />
+                                    </InputWrapper>
                                 </FormWrapper>
-                                <ErrorMessage name="phone" />
 
-                                <button type="submit">Submit </button>
+                                <SubmitWrapper>
+                                    {terms ? (
+                                        <InputName>
+                                            {translate('userFormTermsAgreemet', language)}
+                                        </InputName>
+                                    ) : (
+                                        <InputName>
+                                            {translate('userFromConfirmSubmitMessage', language)}
+                                        </InputName>
+                                    )}
 
+                                    <SubmitFormButton
+                                        type="submit"
+                                        onClick={() => setTerms(!terms)}
+                                    >
+                                        {translate('userAgreementButton', language)}
+                                    </SubmitFormButton>
+                                </SubmitWrapper>
                                 <LabelContainer>
                                     <LinkTo back to="./ChooseSupport">
                                         {translate('backButton', language)}
                                     </LinkTo>
-                                    <LinkTo back={false} to="./SubmitSupport">
-                                        {translate('continueButton', language)}
-                                    </LinkTo>
+
+                                    {terms ? (
+                                        <LinkTo back={false} to="./SubmitSupport">
+                                            {translate('continueButton', language)}
+                                        </LinkTo>
+                                    ) : (
+                                        <LinkTo
+                                            back={false}
+                                            to="./UserDataForm"
+                                            onClick={handleSubmitAlert}
+                                        >
+                                            {translate('continueButton', language)}
+                                        </LinkTo>
+                                    )}
                                 </LabelContainer>
                             </Form>
                         </ContentContainer>

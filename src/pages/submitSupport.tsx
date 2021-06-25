@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { translate } from '../i18n';
 import { RootState } from '../redux/index';
@@ -34,17 +33,6 @@ export const SubmitSupport: React.FC = () => {
 
     return (
         <>
-            <Container>
-                <Link to="./Choose" style={{ margin: '10px' }}>
-                    Choose
-                </Link>
-                <Link to="./UserData" style={{ margin: '10px' }}>
-                    UserData
-                </Link>
-                <Link to="./Submit" style={{ margin: '10px' }}>
-                    submit
-                </Link>
-            </Container>
             <Wrapper>
                 <ContentContainer>
                     <TitleContainer>

@@ -1,12 +1,17 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-vars */
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { Formik, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import { translate } from '../i18n';
 import { RootState } from '../redux/index';
 import { addFormData } from '../redux/actions/formAction';
 
+import SlovakLogo from '../assets/slovak.svg';
+import CzechLogo from '../assets/czech.svg';
 import { Container } from '../styles/components/generalStyled';
 import {
     Wrapper,
@@ -18,31 +23,41 @@ import {
     LabelContainer,
     LinkTo,
 } from '../styles/components/chooseStyled';
-import { StyledInput, FormWrapper, InputName } from '../styles/components/userDataStyled';
+import {
+    StyledInput,
+    FormWrapper,
+    InputName,
+    InputWrapper,
+} from '../styles/components/userDataStyled';
 import DogBg from '../assets/pageBg.png';
-
-const initialFormData = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-};
+import { IFormData } from '../redux/types';
 
 export const UserDataForm: React.FC = () => {
     const { language } = useSelector((state: RootState) => state.lang);
-    const [formData, setForm] = React.useState(initialFormData);
+    const [country, setCountry] = React.useState('');
 
     const dispatch = useDispatch();
 
-    const submitForm = (data: any) => {
-        dispatch(addFormData(data));
-    };
+    const FormSchema = Yup.object().shape({
+        firstName: Yup.string().min(2, 'Príliš krátke!').max(20, 'Príliš dlhé!'),
+        lastName: Yup.string().min(2, 'Príliš krátke!').max(30, 'Príliš dlhé!').required('Povinné'),
+        email: Yup.string().email('Nesprávny formát').required('Povinné'),
+        phone: Yup.string().matches(
+            /^(\+420|\+421)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$/,
+            'Nesprávny formát',
+        ),
+    });
 
-    const handleInput = (e: any) => {
-        const { name, value } = e.target;
-        setForm({ ...formData, [name]: value });
+    const countryFlag = () => {
+        switch (country) {
+            case 'slovak':
+                return SlovakLogo;
+            case 'czech':
+                return CzechLogo;
+            default:
+                return SlovakLogo;
+        }
     };
-
     return (
         <>
             <Container>
@@ -57,79 +72,94 @@ export const UserDataForm: React.FC = () => {
                 </Link>
             </Container>
             <Wrapper>
-                <ContentContainer>
-                    <TitleContainer>
-                        <Title>{translate('userDataTitle', language)}</Title>
-                    </TitleContainer>
+                <Formik
+                    initialValues={{
+                        firstName: '',
+                        lastName: '',
+                        email: '',
+                        phone: '',
+                    }}
+                    validationSchema={FormSchema}
+                    onSubmit={(values: any) => {
+                        dispatch(addFormData(values));
 
-                    <LabelContainer>
-                        <FormTitle>{translate('userDataFormTitle', language)}</FormTitle>
-                    </LabelContainer>
+                        if (values.phone.startsWith('+421')) {
+                            return setCountry('slovak');
+                        }
+                        if (values.phone.startsWith('+420')) {
+                            return setCountry('czech');
+                        }
+                        return setCountry('');
+                    }}
+                >
+                    <>
+                        <ContentContainer>
+                            <TitleContainer>
+                                <Title>{translate('userDataTitle', language)}</Title>
+                            </TitleContainer>
 
-                    <FormWrapper>
-                        <InputName>{translate('userName', language)}</InputName>
-                        <StyledInput
-                            type="text"
-                            minLength={2}
-                            maxLength={20}
-                            placeholder={translate('userNamePlaceholder', language)}
-                            name="firstName"
-                            value={formData.firstName}
-                            onChange={handleInput}
-                        />
-                    </FormWrapper>
-                    <FormWrapper>
-                        <InputName>{translate('userSurname', language)}</InputName>
-                        <StyledInput
-                            type="text"
-                            minLength={2}
-                            maxLength={30}
-                            placeholder={translate('userSurnamePlaceholder', language)}
-                            name="lastName"
-                            value={formData.lastName}
-                            onChange={handleInput}
-                        />
-                    </FormWrapper>
+                            <LabelContainer>
+                                <FormTitle>{translate('userDataFormTitle', language)}</FormTitle>
+                            </LabelContainer>
+                            <Form>
+                                <FormWrapper>
+                                    <InputName>{translate('userName', language)}</InputName>
 
-                    <FormWrapper>
-                        <InputName>{translate('userEmail', language)}</InputName>
-                        <StyledInput
-                            type="email"
-                            placeholder={translate('userEmailPlaceholder', language)}
-                            name="email"
-                            value={formData.email}
-                            onChange={handleInput}
-                        />
-                    </FormWrapper>
+                                    <StyledInput
+                                        placeholder={translate('userNamePlaceholder', language)}
+                                        name="firstName"
+                                    />
 
-                    <FormWrapper>
-                        <InputName>{translate('userPhoneNo', language)}</InputName>
-                        <StyledInput
-                            type="tel"
-                            placeholder={translate('userPhoneSk', language)}
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleInput}
-                        />
-                    </FormWrapper>
+                                    <ErrorMessage name="firstName" />
+                                </FormWrapper>
 
-                    <LabelContainer>
-                        <LinkTo back to="./ChooseSupport">
-                            {translate('backButton', language)}
-                        </LinkTo>
-                        <LinkTo
-                            back={false}
-                            to="./SubmitSupport"
-                            onClick={() => submitForm(formData)}
-                        >
-                            {translate('continueButton', language)}
-                        </LinkTo>
-                    </LabelContainer>
-                </ContentContainer>
+                                <FormWrapper>
+                                    <InputName>{translate('userSurname', language)}</InputName>
 
-                <Container>
-                    <Image src={DogBg} />
-                </Container>
+                                    <StyledInput
+                                        placeholder={translate('userSurnamePlaceholder', language)}
+                                        name="lastName"
+                                    />
+                                </FormWrapper>
+                                <ErrorMessage name="lastName" />
+
+                                <FormWrapper>
+                                    <InputName>{translate('userEmail', language)}</InputName>
+                                    <StyledInput
+                                        placeholder={translate('userEmailPlaceholder', language)}
+                                        name="email"
+                                    />
+                                </FormWrapper>
+                                <ErrorMessage name="email" />
+
+                                <FormWrapper>
+                                    <InputName>{translate('userPhoneNo', language)}</InputName>
+                                    <StyledInput
+                                        placeholder={translate('userPhoneSk', language)}
+                                        name="phone"
+                                    />
+                                    <img src={countryFlag()} />
+                                </FormWrapper>
+                                <ErrorMessage name="phone" />
+
+                                <button type="submit">Submit </button>
+
+                                <LabelContainer>
+                                    <LinkTo back to="./ChooseSupport">
+                                        {translate('backButton', language)}
+                                    </LinkTo>
+                                    <LinkTo back={false} to="./SubmitSupport">
+                                        {translate('continueButton', language)}
+                                    </LinkTo>
+                                </LabelContainer>
+                            </Form>
+                        </ContentContainer>
+
+                        <Container>
+                            <Image src={DogBg} />
+                        </Container>
+                    </>
+                </Formik>
             </Wrapper>
         </>
     );

@@ -33,14 +33,14 @@ export const LogoText = styled.p`
     margin-top: 0;
     font-size: ${(props) => props.theme.largeFontSize};
     font-weight: bolder;
-    font-family: ${(props) => props.theme.headerFont};
+    font-family: sans-serif;
     margin-left: ${(props) => props.theme.secondaryPadding};
 `;
 
 export const CardTitle = styled.div`
     font-size: ${(props) => props.theme.mediumFontSize};
     font-weight: bold;
-    font-family: ${(props) => props.theme.headerFont};
+    font-family: sans-serif;
     justify-content: center;
     padding: ${(props) => props.theme.smallPadding};
 `;

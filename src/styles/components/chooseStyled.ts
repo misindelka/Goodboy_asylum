@@ -61,6 +61,28 @@ export const LinkTo = styled(NavLink)<{ back: boolean }>`
     }
 `;
 
+export const FormButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: ${(props) => props.theme.primaryFontSize};
+    width: 124px;
+    height: 59px;
+    left: 682px;
+    top: 844px;
+    margin-top: ${(props) => props.theme.largePadding};
+    background: ${(props) => props.theme.cardBgBrown};
+    border-radius: 100px;
+    text-decoration: none;
+    :hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: transform 0.3s;
+    }
+`;
+
 export const TitleContainer = styled.div`
     max-width: ${(props) => props.theme.largeContarinerSize};
 `;

@@ -42,10 +42,20 @@ const initialOptionsValue = {
     phone: '',
 };
 
+interface IProps {
+    shelterOption: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    value: string;
+    shelterID: number;
+}
+
 export const ChooseSupport: React.FC = () => {
     const { language } = useSelector((state: RootState) => state.lang);
     const { shelters } = useSelector((state: IShelters) => state.shelters);
-    const [options, setOptions] = React.useState<IFormData>(initialOptionsValue);
+    const [options, setOptions] = React.useState<IProps>(initialOptionsValue);
 
     const dispatch = useDispatch();
 

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { translate } from '../i18n';
 import { RootState } from '../redux/index';
+import { postFormData } from '../redux/actions/formAction';
 
 import { Container } from '../styles/components/generalStyled';
 import {
@@ -25,8 +26,11 @@ export const SubmitSupport: React.FC = () => {
     const formData = useSelector((state: RootState) => state.formData);
     const { shelters } = useSelector((state: IShelters) => state.shelters);
     const [checked, setChecked] = React.useState(false);
+    const dispatch = useDispatch();
 
     const selectedShelter = shelters?.filter((i: IShelters) => i.id === formData.shelterID);
+
+    const handleSubmitSupport = () => dispatch(postFormData(formData));
 
     return (
         <>
@@ -92,7 +96,7 @@ export const SubmitSupport: React.FC = () => {
                         <LinkTo back to="./UserDataForm">
                             {translate('backButton', language)}
                         </LinkTo>
-                        <LinkTo back={false} to="./ChooseSupport">
+                        <LinkTo back={false} to="./ChooseSupport" onClick={handleSubmitSupport}>
                             {translate('submitButton', language)}
                         </LinkTo>
                     </LabelContainer>

@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { GET_SHELTERS } from '../types';
 
 export const getShelters =
